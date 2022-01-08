@@ -11,7 +11,7 @@ import api from '../api'
 import UsersTable from './usersTable'
 import _ from 'lodash'
 
-const Users = ({ ...rest }) => {
+const UsersList = ({ ...rest }) => {
   // для users будем использовать алиас allUsers, а имя users будем использовать для страниц - вместо userCrop
 
   const [currentPage, setCurrentPage] = useState(1)
@@ -141,10 +141,10 @@ const Users = ({ ...rest }) => {
   }
   return 'loading ...'
 }
-Users.propTypes = {
-  users: PropTypes.array.isRequired,
+UsersList.propTypes = {
+  users: PropTypes.array,
   count: PropTypes.number
   // allUsers: PropTypes.array
 }
 
-export default Users
+export default UsersList

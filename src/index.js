@@ -4,12 +4,15 @@ import ReactDOM from 'react-dom'
 import reportWebVitals from './reportWebVitals'
 import 'bootstrap/dist/js/bootstrap.bundle.min'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import { BrowserRouter } from 'react-router-dom'
 // import Users from './component/users'
 // import  bootstrap from 'bootstrap'
 
 ReactDOM.render(
   <React.StrictMode>
-    <Api />
+    <BrowserRouter>
+      <Api />
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
 )
