@@ -68,14 +68,14 @@ const UsersList = ({ ...rest }) => {
 
   const handleProfessionsSelect = (item) => {
     setSelectedProf(item)
-    console.log(item)
+    // console.log(item)
   }
 
   const handleSort = (item) => {
     // логика сортировки была перенесена в userTable
     console.log('from users handleSort item', item)
     setSortBy(item)
-    console.log('sortBy', sortBy)
+    // console.log('sortBy', sortBy)
   }
   //! делаем проверку = если  есть пользователи -то возвращаем код если нет - то loading
   if (users) {
@@ -83,7 +83,7 @@ const UsersList = ({ ...rest }) => {
       ? users.filter((user) => (JSON.stringify(user.profession) === JSON.stringify(selectedProf)))
       : users
 
-    console.log(filteredUsers, 'filteredUsers')
+    // console.log(filteredUsers, 'filteredUsers')
     // тут была переменная userCrop  стала users
 
     const count = filteredUsers.length
