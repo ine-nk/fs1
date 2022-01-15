@@ -43,7 +43,7 @@ const Pagination = ({ pageSize, itemCount, onPageChange, currentPage }) => {
         </li>
         { pages.map((page) => (
           <li key={ page } className={ 'page-item ' + (page === currentPage ? 'active' : '') }>
-            <a className="page-link" onClick={ () => onPageChange(page) }>
+            <a href='#' className="page-link" onClick={ () => onPageChange(page) }>
               { page }
             </a>
           </li>
