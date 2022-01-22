@@ -455,8 +455,30 @@ export default UserPage
 ``
 ================
 
+## переиспользуемые поля ввода
 
-
+  используется:
+```
+    <TextField
+      label='Электронная почта'
+      type='text'
+      name='email'
+      value={ data.email }
+      onChange={ handleChange } />
+```
+```
+const TextField = ({ label, type, name, value, onChange }) => {
+  return (<div className='mb-3'>
+    <label className="form-label" htmlFor="email">{ label }</label>
+    <input className="form-control"
+      type={ type }
+      id={ name }
+      name={ name }
+      value={ value }
+      onChange={ onChange } /></div>
+  )
+}
+```
 
 
   

@@ -1,29 +1,34 @@
 import React, { useState } from 'react'
+import TextField from '../component/textField'
 
 const Login = () => {
-  const [email, setEmail] = useState('')
+  const [data, setData] = useState({ email: '', password: '' })
 
-  const handleChange = (e) => {
-    setEmail(e.target.value)
-    console.log(e.target.name)
+  const handleChange = ({ target }) => {
+    setData((prevState) => ({ ...prevState, [target.name]: target.value }))
   }
-  return <form className='m-3' action="">
-    <div className='mb-3'>
-      <label className="form-label" htmlFor="email">Email</label>
-      <input className="form-control" type="text"
-        id='email'
-        name='email'
-        value={ email }
-        onChange={ handleChange } /></div>
-    <div className='mb-3'>
-      <label className="form-label"
-        htmlFor="password" >Password</label>
-      <input className="form-control"
-        type="password"
-        name='password'
-        id='passsword'
-        onChange={ handleChange } /></div>
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    console.log('data', data)
+  }
+
+  return (<form className='m-3' onSubmit={ handleSubmit }>
+    <TextField
+      label='Электронная почта'
+      name='email'
+      value={ data.email }
+      onChange={ handleChange } />
+    <TextField
+      label='Пароль'
+      type='password'
+      name='password'
+      value={ data.password }
+      onChange={ handleChange }
+    />
+    <button type='submit'>Submit</button>
   </form>
+  )
 }
 
 export default Login
