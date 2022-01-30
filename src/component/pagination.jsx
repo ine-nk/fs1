@@ -35,6 +35,7 @@ const Pagination = ({ pageSize, itemCount, onPageChange, currentPage }) => {
         <li className={ 'page-item ' + (currentPage === 1 ? 'disabled' : '') }>
           <a
             className="page-link"
+            href='#'
             aria-label="Previous"
             onClick={ () => handlePageDecrement(currentPage) }
           >
@@ -43,13 +44,16 @@ const Pagination = ({ pageSize, itemCount, onPageChange, currentPage }) => {
         </li>
         { pages.map((page) => (
           <li key={ page } className={ 'page-item ' + (page === currentPage ? 'active' : '') }>
-            <a className="page-link" onClick={ () => onPageChange(page) }>
+            <a className="page-link"
+              href='#'
+              onClick={ () => onPageChange(page) }>
               { page }
             </a>
           </li>
         )) }
         <li className={ 'page-item ' + (currentPage === pageCount ? 'disabled' : '') }>
           <a
+            href='#'
             className="page-link"
             aria-label="Next"
             onClick={ () => handlePageIncrement(currentPage) }
