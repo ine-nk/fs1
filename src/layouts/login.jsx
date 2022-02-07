@@ -8,9 +8,10 @@ const Login = () => {
     setData((prevState) => ({ ...prevState, [target.name]: target.value }))
   }
 
-  useEffect(() => {
-    validate()
-  }, [data])
+  const validatorConfig = {
+    emai: { isRequired: { message: 'Электронная почта обязательно для заполнения' } },
+    password: { isRequired: { message: 'Укажите пароль ' } }
+  }
 
   const validate = () => {
     const errors = {}
@@ -22,6 +23,10 @@ const Login = () => {
     setErrors(errors)
     return Object.keys(errors).length === 0
   }
+
+  useEffect(() => {
+    validate()
+  }, [data])
 
   const handleSubmit = (e) => {
     e.preventDefault()

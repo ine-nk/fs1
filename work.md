@@ -479,6 +479,12 @@ const TextField = ({ label, type, name, value, onChange }) => {
   )
 }
 ```
+  для постоянного отслеживания изменния в полях формы data необходимо использовать useEffect с вызовом функции валидирования
+
+``` useEffect(() => {
+   validate()
+ }, [data])
+```
 
 
   
