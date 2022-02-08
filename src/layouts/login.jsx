@@ -4,7 +4,7 @@ import { validator } from '../utils/validator'
 
 const Login = () => {
   const [data, setData] = useState({ email: '', password: '' })
-  const [error, setErrors] = useState({})
+  const [errors, setErrors] = useState({})
   const handleChange = ({ target }) => {
     setData((prevState) => ({ ...prevState, [target.name]: target.value }))
   }
@@ -43,14 +43,14 @@ const Login = () => {
       name='email'
       value={ data.email }
       onChange={ handleChange }
-      error={ error.email } />
+      errors={ errors.email } />
     <TextField
       label='Пароль'
       type='password'
       name='password'
       value={ data.password }
       onChange={ handleChange }
-      error={ error.password }
+      errors={ errors.password }
     />
     <button type='submit'>Submit</button>
   </form>
