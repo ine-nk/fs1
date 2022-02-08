@@ -10,7 +10,10 @@ const Login = () => {
   }
 
   const validatorConfig = {
-    emai: { isRequired: { message: 'Электронная почта обязательно для заполнения' } },
+    email: {
+      isRequired: { message: 'Электронная почта обязательно для заполнения' },
+      isEmail: { message: 'Введите корректный email' }
+    },
     password: { isRequired: { message: 'Укажите пароль ' } }
   }
 
@@ -43,14 +46,14 @@ const Login = () => {
       name='email'
       value={ data.email }
       onChange={ handleChange }
-      errors={ errors.email } />
+      error={ errors.email } />
     <TextField
       label='Пароль'
       type='password'
       name='password'
       value={ data.password }
       onChange={ handleChange }
-      errors={ errors.password }
+      error={ errors.password }
     />
     <button type='submit'>Submit</button>
   </form>

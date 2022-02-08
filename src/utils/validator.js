@@ -7,7 +7,11 @@ export function validator(data, config) {
       case 'isRequired':
         if (data.trim() === '') return config.message
         break
-
+      case 'isEmail': {
+        const emailRegExp = /^\S+@\S+\.\S+$/g
+        if (!emailRegExp.test(data)) return config.message
+        break
+      }
       default:
         break
     }
@@ -19,7 +23,7 @@ export function validator(data, config) {
     for (const validateMethod in config[fieldName]) {
       // поученные данные передаются в функцию - определенную ранее
       const error = validate(validateMethod, data[fieldName], config[fieldName][validateMethod])
-      if (error) {
+      if (error && !errors[fieldName]) {
         errors[fieldName] = error
       }
     }

@@ -10,7 +10,7 @@ const TextField = ({ label, type, name, value, onChange, error }) => {
       name={ name }
       value={ value }
       onChange={ onChange } />
-    { error && <p>Это поле не должно быть пустым</p> }
+    { error && <p>{ error }</p> }
   </div>
   )
 }
