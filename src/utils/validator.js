@@ -3,18 +3,33 @@ export function validator(data, config) {
   const errors = {}
 
   function validate(validateMethod, data, config) {
+    let statusValidate
     switch (validateMethod) {
       case 'isRequired':
-        if (data.trim() === '') return config.message
+        statusValidate = data.trim() === ''
         break
       case 'isEmail': {
         const emailRegExp = /^\S+@\S+\.\S+$/g
-        if (!emailRegExp.test(data)) return config.message
+        statusValidate = !emailRegExp.test(data)
         break
       }
-      default:
-        break
+      case 'isCapitalSimbol': {
+        const capitalRegExp = /[A-Z]/g
+        statusValidate = !capitalRegExp.test(data)
+      }
+      break
+    case 'isContainDigit': {
+      const digitRegExp = /\d+/g
+      statusValidate = !digitRegExp.test(data)
     }
+    break
+    case 'min':
+      statusValidate = data.length < config.value
+      break
+    default:
+      break
+    }
+    if (statusValidate) return config.message
   }
   // так как data это форма которая содержит имена полей то делаем проход по всем полям
   for (const fieldName in data) {
@@ -23,6 +38,7 @@ export function validator(data, config) {
     for (const validateMethod in config[fieldName]) {
       // поученные данные передаются в функцию - определенную ранее
       const error = validate(validateMethod, data[fieldName], config[fieldName][validateMethod])
+
       if (error && !errors[fieldName]) {
         errors[fieldName] = error
       }
